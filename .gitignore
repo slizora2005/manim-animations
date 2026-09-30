@@ -1,0 +1,5 @@
+# Manim render output and Python cache
+media/
+__pycache__/
+*.pyc
+.DS_Store
