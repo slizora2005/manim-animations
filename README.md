@@ -12,9 +12,10 @@ Short math animations I write in Python while learning [Manim](https://www.manim
 
 ## Render them yourself
 
-Install Manim Community (v0.19 was used here) by following the [installation guide](https://docs.manim.community/en/stable/installation.html), then run:
+Manim needs a few system tools (like LaTeX for the math labels), so follow the [installation guide](https://docs.manim.community/en/stable/installation.html) for your OS first. Then install the pinned version used here and render:
 
 ```bash
+pip install -r requirements.txt
 manim -pqh scenes/parabola_area.py Graphing
 manim -pqh scenes/shapes_3d.py HelloWorld
 manim -pqh scenes/updaters.py Updaters
@@ -30,3 +31,7 @@ videos/    Rendered MP4s, optimized for web playback
 posters/   Preview frames shown before a video plays
 index.html The gallery page served by GitHub Pages
 ```
+
+## License
+
+The code is available under the [MIT License](LICENSE).

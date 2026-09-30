@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Manim sketches</title>
 <meta name="description" content="Short math animations written in Python with Manim.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Manim sketches">
+<meta property="og:description" content="Short math animations written in Python with Manim, each with the code that made it.">
+<meta property="og:url" content="https://slizora2005.github.io/manim-animations/">
+<meta property="og:image" content="https://slizora2005.github.io/manim-animations/posters/parabola-area.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Riemann rectangles filling the area under a parabola on a number plane">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>∫</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +29,7 @@
     --grid: rgba(88, 196, 221, 0.22);
     --axis: rgba(20, 33, 43, 0.55);
     --panel: #E2EAEF;
+    --tok-keyword: #7A4F8E; --tok-string: #2E7D5B; --tok-number: #B0572B;
     --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
     --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
   }
@@ -27,6 +37,7 @@
     :root {
       --paper: #0F1A21; --ink: #E3ECF1; --muted: #93A6B4; --link: #7FD3EA;
       --grid: rgba(88, 196, 221, 0.13); --axis: rgba(227, 236, 241, 0.5); --panel: #16242D;
+      --tok-keyword: #C9A3DA; --tok-string: #8FD6AE; --tok-number: #F0A77E;
     }
   }
   * { box-sizing: border-box; }
@@ -74,6 +85,24 @@
     overflow-x: auto; font-size: .95rem; line-height: 1.55; tab-size: 4; }
   .render { color: var(--muted); font-size: 1rem; }
 
+  /* Syntax highlighting (Prism tokens), in the Manim palette */
+  .token.comment { color: var(--muted); font-style: italic; }
+  .token.keyword, .token.builtin { color: var(--tok-keyword); }
+  .token.string, .token.triple-quoted-string { color: var(--tok-string); }
+  .token.number, .token.boolean { color: var(--tok-number); }
+  .token.function, .token.class-name { color: var(--link); }
+  .token.operator, .token.punctuation { color: var(--muted); }
+
+  /* Copy buttons */
+  .code-block { position: relative; }
+  .code-block pre { padding-right: 5rem; }
+  .copy { font: .8rem var(--mono); color: var(--muted); background: var(--paper);
+    border: 1px solid var(--grid); border-radius: 4px; padding: .2rem .55rem; cursor: pointer; }
+  .copy:hover { color: var(--ink); border-color: var(--curve); }
+  .copy:focus-visible { outline: 2px solid var(--curve); outline-offset: 2px; }
+  .code-block .copy { position: absolute; top: .6rem; right: .6rem; }
+  .render .copy { margin-left: .4rem; vertical-align: .1em; }
+
   footer { max-width: 62rem; margin: 0 auto; padding: 2rem 1.5rem 4rem; color: var(--muted);
     font-size: 1rem; border-top: 1px solid var(--grid); }
   @media (max-width: 600px) { .plane { opacity: .3; } .hero-text { padding-top: 5rem; } .scene { margin-bottom: 3.5rem; } }
@@ -89,7 +118,7 @@
   </svg>
   <div class="hero-text">
     <h1>Manim sketches</h1>
-    <p class="intro">Short math animations I write in Python while learning <a href="https://www.manim.community/">Manim</a>. Each one comes with the code that made it. <a href="https://github.com/slizora2005/manim-animations">See the repo on GitHub</a></p>
+    <p class="intro">Short math animations I write in Python while learning <a href="https://www.manim.community/">Manim</a>. Each one comes with the code that made it. <a href="https://github.com/slizora2005/manim-animations">See the repo on GitHub</a>.</p>
   </div>
 </header>
 <main>
@@ -101,10 +130,10 @@
       <div class="caption">
         <h2><a href="#parabola-area">Area between a parabola and a semicircle</a></h2>
         <p>Plots f(x) = x² − 4 and f(x) = √(16 − x²) on a number plane, fills the space under the parabola with Riemann rectangles, then morphs them onto the semicircle.</p>
-        <p class="meta">17.5 seconds, scene <code>Graphing</code></p>
+        <p class="meta">17.5 seconds, scene <code>Graphing</code> · <a href="https://github.com/slizora2005/manim-animations/blob/main/scenes/parabola_area.py">View on GitHub</a></p>
         <details>
           <summary>View the Python source</summary>
-          <pre><code>from manim import *
+          <pre><code class="language-python">from manim import *
 
 
 class Graphing(Scene):
@@ -155,10 +184,10 @@ class Graphing(Scene):
       <div class="caption">
         <h2><a href="#shapes-3d">A sphere and a cube in 3D</a></h2>
         <p>A translucent sphere and cube move apart and back through a set of 3D axes while the camera tilts to show depth.</p>
-        <p class="meta">7 seconds, scene <code>HelloWorld</code></p>
+        <p class="meta">7 seconds, scene <code>HelloWorld</code> · <a href="https://github.com/slizora2005/manim-animations/blob/main/scenes/shapes_3d.py">View on GitHub</a></p>
         <details>
           <summary>View the Python source</summary>
-          <pre><code>from manim import *
+          <pre><code class="language-python">from manim import *
 
 class HelloWorld(ThreeDScene):
     def construct(self):
@@ -190,10 +219,10 @@ class HelloWorld(ThreeDScene):
       <div class="caption">
         <h2><a href="#updaters">A box that follows ln(2)</a></h2>
         <p>Uses always_redraw so the surrounding box and its caption rebuild every frame and track the expression as it slides left and right.</p>
-        <p class="meta">6 seconds, scene <code>Updaters</code></p>
+        <p class="meta">6 seconds, scene <code>Updaters</code> · <a href="https://github.com/slizora2005/manim-animations/blob/main/scenes/updaters.py">View on GitHub</a></p>
         <details>
           <summary>View the Python source</summary>
-          <pre><code>from manim import *
+          <pre><code class="language-python">from manim import *
 
 
 class Updaters(Scene):
@@ -212,6 +241,45 @@ class Updaters(Scene):
       </div>
     </article>
 </main>
-<footer>Rendered with Manim Community v0.19.0.</footer>
+<footer>Rendered with Manim Community v0.19.0. Code under the <a href="https://github.com/slizora2005/manim-animations/blob/main/LICENSE">MIT License</a>.</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script>
+  // Add a copy button to each source listing and each render command.
+  // If the clipboard API is blocked, select the text so the reader can copy it by hand.
+  function copyButton(el) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "copy";
+    btn.textContent = "Copy";
+    btn.addEventListener("click", async () => {
+      let copied = false;
+      try {
+        await navigator.clipboard.writeText(el.textContent);
+        copied = true;
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        const sel = getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        try { copied = document.execCommand("copy"); } catch {}
+        if (copied) sel.removeAllRanges();
+      }
+      btn.textContent = copied ? "Copied" : "Press Ctrl+C";
+      setTimeout(() => { btn.textContent = "Copy"; }, 1800);
+    });
+    return btn;
+  }
+  document.querySelectorAll("details pre").forEach((pre) => {
+    const wrap = document.createElement("div");
+    wrap.className = "code-block";
+    pre.replaceWith(wrap);
+    wrap.append(pre, copyButton(pre.querySelector("code")));
+  });
+  document.querySelectorAll(".render code").forEach((code) => {
+    code.after(copyButton(code));
+  });
+</script>
 </body>
 </html>
